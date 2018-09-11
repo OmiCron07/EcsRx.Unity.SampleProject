@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ddaec31c0a437d47813f9dd0477ff19, type: 3}
+  m_Name: GameplaySceneProfile
+  m_EditorClassIdentifier: 
+  SceneProfile:
+    Profile: 2
+    IsMaster: 0
+    IsAdditive: 0
+    Scenes:
+    - {fileID: 102900000, guid: d86c673a1ec16e14a90ee521f761d391, type: 3}
+    - {fileID: 102900000, guid: 1ac4fd07214207b4f971282aff2d0bef, type: 3}
+    - {fileID: 102900000, guid: f1db07b44fdd4734496b4bc1fcbcd146, type: 3}
