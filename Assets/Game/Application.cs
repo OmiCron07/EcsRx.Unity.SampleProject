@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
-using EcsRx.Collections;
-using EcsRx.Events;
 using EcsRx.Zenject;
 using EcsRx.Zenject.Extensions;
-using Game.Blueprints.Scenes;
+using Game.Blueprints;
+using Game.Blueprints.SceneProfiles;
+using Game.Events;
 using Game.Scripts.Enums;
 using UniRx;
 using UnityEngine;
@@ -38,6 +38,9 @@ namespace Game
     protected override void ApplicationStarted()
     {
       var defaultCollection = CollectionManager.GetCollection();
+
+      defaultCollection.CreateEntity(new InputBlueprint());
+      Debug.Log("Entity created");
 
       foreach (var sceneProfileBlueprint in _sceneProfileBlueprints)
       {

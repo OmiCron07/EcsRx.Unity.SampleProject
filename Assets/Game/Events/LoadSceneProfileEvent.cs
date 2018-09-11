@@ -1,12 +1,16 @@
 ﻿using Game.Scripts.Enums;
 
-public class LoadSceneProfileEvent 
+
+namespace Game.Events
 {
-  public SceneProfileEnum SceneProfile { get; private set; }
-
-
-  public LoadSceneProfileEvent(SceneProfileEnum sceneProfile)
+  public class LoadSceneProfileEvent 
   {
-    SceneProfile = sceneProfile;
+    public SceneProfileEnum SceneProfile { get; private set; }
+
+
+    public LoadSceneProfileEvent(SceneProfileEnum sceneProfile)
+    {
+      SceneProfile = sceneProfile;
+    }
   }
 }

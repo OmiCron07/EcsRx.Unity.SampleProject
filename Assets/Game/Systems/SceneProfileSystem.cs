@@ -9,7 +9,7 @@ using EcsRx.MicroRx.Extensions;
 using EcsRx.Systems;
 using EcsRx.Unity.Extensions;
 using Game.Components;
-using UnityEditor;
+using Game.Events;
 using UnityEngine.SceneManagement;
 
 namespace Game.Systems

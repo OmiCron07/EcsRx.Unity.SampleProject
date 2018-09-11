@@ -3,7 +3,7 @@ using EcsRx.Entities;
 using Game.Components;
 using UnityEngine;
 
-namespace Game.Blueprints.Scenes
+namespace Game.Blueprints.SceneProfiles
 {
   [CreateAssetMenu(fileName = "SceneProfile", menuName = "SampleProject/Scene Profile")]
   public class SceneProfileBlueprint : ScriptableObject, IBlueprint
