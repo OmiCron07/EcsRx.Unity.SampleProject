@@ -120,6 +120,11 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 114781469570545058, guid: dafba521597fb4842a0f95278c11746a,
+        type: 2}
+      propertyPath: _sceneProfileBlueprints.Array.size
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 4120554860812950, guid: dafba521597fb4842a0f95278c11746a, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -152,6 +157,35 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114781469570545058, guid: dafba521597fb4842a0f95278c11746a,
+        type: 2}
+      propertyPath: _sceneProfileToStart
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114781469570545058, guid: dafba521597fb4842a0f95278c11746a,
+        type: 2}
+      propertyPath: _sceneProfileBlueprints.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 3a0dca29874ff5f499b1f649758d71f6,
+        type: 2}
+    - target: {fileID: 114781469570545058, guid: dafba521597fb4842a0f95278c11746a,
+        type: 2}
+      propertyPath: _sceneProfileBlueprints.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: c8c60df774d63584389691cd9400280a,
+        type: 2}
+    - target: {fileID: 114781469570545058, guid: dafba521597fb4842a0f95278c11746a,
+        type: 2}
+      propertyPath: _sceneProfileBlueprints.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: 9f15b1a680cfdae4b91a091766aff87d,
+        type: 2}
+    - target: {fileID: 114781469570545058, guid: dafba521597fb4842a0f95278c11746a,
+        type: 2}
+      propertyPath: _sceneProfileBlueprints.Array.data[3]
+      value: 
+      objectReference: {fileID: 11400000, guid: e69b4852232b0f644b1e0e1e46018189,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dafba521597fb4842a0f95278c11746a, type: 2}
   m_IsPrefabAsset: 0

@@ -1,4 +1,5 @@
-﻿using System.Reflection;
+﻿using System;
+using System.Reflection;
 using UniRx;
 using UnityEngine;
 
@@ -91,7 +92,12 @@ namespace EcsRx.Unity.Extensions
 						node.Add(property.Name, new JSONData((Vector3)reactiveProperty.Value));
 						continue;
 					}
-				}
+          if (property.PropertyType.IsEnum)
+          {
+            node.Add(property.Name, new JSONData((int)property.GetValue(component, null)));
+            continue;
+          }
+        }
 			}
 			return node;
 		}
@@ -177,7 +183,12 @@ namespace EcsRx.Unity.Extensions
 					property.SetValue(component, reactiveProperty, null);
 					return;
 				}
-			}
+        if (property.PropertyType.IsEnum)
+        {
+          property.SetValue(component, Enum.ToObject(property.PropertyType, propertyData.AsInt), null);
+          return;
+        }
+      }
 		}
 	}
 }
