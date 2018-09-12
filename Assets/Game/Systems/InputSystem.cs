@@ -1,5 +1,4 @@
-﻿using System;
-using EcsRx.Entities;
+﻿using EcsRx.Entities;
 using EcsRx.Extensions;
 using EcsRx.Groups;
 using EcsRx.Systems;
@@ -19,19 +18,15 @@ namespace Game.Systems
     {
       var inputComponent = entity.GetComponent<InputComponent>();
 
-      inputComponent.Movement.Value = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
-      inputComponent.Fire = CreateKeyDownAndHoldStream(KeyCode.Space);
+      inputComponent.Movement = Observable.EveryUpdate().Select(_ => new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"))).Where(x => x != Vector2.zero);
+      inputComponent.Fire     = Observable.EveryUpdate().Where(_ => Input.GetKey(KeyCode.Space)).Select(_ => Unit.Default);
 
-      inputComponent.Fire.Subscribe(_ => Debug.Log("Fire!!!!"));
-    }
-
-    private IObservable<Unit> CreateKeyDownAndHoldStream(KeyCode key)
-    {
-      var keyDown = Observable.EveryUpdate().Where(_ => Input.GetKeyDown(key));
-      var keyUp = Observable.EveryUpdate().Where(_ => Input.GetKeyUp(key));
-      var keyPress = keyDown.TakeUntil(keyUp).Select(_ => Unit.Default);
-
-      return keyPress;
+      inputComponent.MenuUp     = Observable.EveryUpdate().Where(_ => Input.GetKeyDown(KeyCode.W)).Select(_ => Unit.Default);
+      inputComponent.MenuDown   = Observable.EveryUpdate().Where(_ => Input.GetKeyDown(KeyCode.S)).Select(_ => Unit.Default);
+      inputComponent.MenuLeft   = Observable.EveryUpdate().Where(_ => Input.GetKeyDown(KeyCode.A)).Select(_ => Unit.Default);
+      inputComponent.MenuRight  = Observable.EveryUpdate().Where(_ => Input.GetKeyDown(KeyCode.D)).Select(_ => Unit.Default);
+      inputComponent.MenuAccept = Observable.EveryUpdate().Where(_ => Input.GetKeyDown(KeyCode.F)).Select(_ => Unit.Default);
+      inputComponent.MenuBack   = Observable.EveryUpdate().Where(_ => Input.GetKeyDown(KeyCode.R)).Select(_ => Unit.Default);
     }
   }
 }

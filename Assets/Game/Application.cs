@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using EcsRx.Zenject;
 using EcsRx.Zenject.Extensions;
 using Game.Blueprints;
@@ -40,14 +41,19 @@ namespace Game
       var defaultCollection = CollectionManager.GetCollection();
 
       defaultCollection.CreateEntity(new InputBlueprint());
-      Debug.Log("Entity created");
 
-      foreach (var sceneProfileBlueprint in _sceneProfileBlueprints)
+      if (_sceneProfileBlueprints?.Any() == true)
       {
-        defaultCollection.CreateEntity(sceneProfileBlueprint);
+        foreach (var sceneProfileBlueprint in _sceneProfileBlueprints)
+        {
+          defaultCollection.CreateEntity(sceneProfileBlueprint);
+        }
       }
 
-      Observable.EveryUpdate().First().Subscribe(_ => EventSystem.Publish(new LoadSceneProfileEvent(_sceneProfileToStart)));
+      if (_sceneProfileToStart != SceneProfileEnum.None)
+      {
+        Observable.EveryUpdate().First().Subscribe(_ => EventSystem.Publish(new LoadSceneProfileEvent(_sceneProfileToStart)));
+      }
     }
   }
 }
