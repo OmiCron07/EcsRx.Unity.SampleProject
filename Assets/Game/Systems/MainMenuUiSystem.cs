@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using EcsRx.Entities;
 using EcsRx.Extensions;
 using EcsRx.Groups;
+using EcsRx.Groups.Observable;
 using EcsRx.Systems;
 using EcsRx.Unity.Extensions;
 using Game.Components;
@@ -14,8 +17,10 @@ using UnityEngine.UI;
 
 namespace Game.Systems
 {
-  public class MainMenuUiSystem : ISetupSystem
+  public class MainMenuUiSystem : IManualSystem, ISetupSystem
   {
+    private readonly Dictionary<UiElementEnum, IEntity> _entities = new Dictionary<UiElementEnum, IEntity>();
+    private readonly ICollection<IDisposable> _disposables = new List<IDisposable>();
     private readonly IReactiveProperty<MainMenuStepEnum> _currentStep = new ReactiveProperty<MainMenuStepEnum>(MainMenuStepEnum.Title);
 
 
@@ -25,46 +30,75 @@ namespace Game.Systems
 
     /// <inheritdoc />
     public void Setup(IEntity entity)
-    {
+    {Debug.Log($"setup {entity.GetGameObject().name}");
       var uiComponent = entity.GetComponent<UiComponent>();
+      _entities.Add(uiComponent.Element, entity);
+    }
 
-      switch (uiComponent.Element)
+    /// <inheritdoc />
+    public void StartSystem(IObservableGroup observableGroup)
+    {
+      //foreach (IEntity entity in observableGroup)
+      //{
+      //  var uiComponent = entity.GetComponent<UiComponent>();
+      //  _entities.Add(uiComponent.Element, entity);
+      //}
+      Debug.Log($"StartSystem {_entities.Count}");
+      foreach (var entity in _entities)
       {
-        case UiElementEnum.MainMenu_Title:
+        switch (entity.Key)
+        {
+          case UiElementEnum.MainMenu_Title:
+            _currentStep.Subscribe(step => entity.Value.GetGameObject().SetActive(step == MainMenuStepEnum.Title)).AddTo(_disposables);
+            var element = entity.Value.GetUnityComponent<TextMeshProUGUI>();
+            this.WaitForScene().Subscribe(_ => element.StartCoroutine(TitleCoroutine(element))).AddTo(_disposables);
 
-          _currentStep.Subscribe(step => entity.GetGameObject().SetActive(step == MainMenuStepEnum.Title)).AddTo(entity.GetGameObject());
-          var element = entity.GetUnityComponent<TextMeshProUGUI>();
-          element.StartCoroutine(Title(element));
+            break;
 
-          break;
+          case UiElementEnum.MainMenu_PrimaryMenu:
 
-        case UiElementEnum.MainMenu_PrimaryMenu:
-          _currentStep.Subscribe(step => entity.GetGameObject().SetActive(step == MainMenuStepEnum.PrimaryMenu)).AddTo(entity.GetGameObject());
+            _currentStep.Subscribe(step =>
+                                     {
+                                       entity.Value.GetGameObject().SetActive(step == MainMenuStepEnum.PrimaryMenu);
+                                       _entities[UiElementEnum.MainMenu_PrimaryMenu_PlayButton].GetUnityComponent<Button>().Select();
+                                     }).AddTo(_disposables);
 
-          break;
+            break;
 
-        case UiElementEnum.MainMenu_PrimaryMenu_AboutButton:
-          entity.GetUnityComponent<Button>().OnClickAsObservable().Subscribe(_ => _currentStep.Value = MainMenuStepEnum.AboutMenu).AddTo(entity.GetGameObject());
-          break;
+          case UiElementEnum.MainMenu_PrimaryMenu_PlayButton:
 
-        case UiElementEnum.MainMenu_AboutMenu:
-          _currentStep.Subscribe(step => entity.GetGameObject().SetActive(step == MainMenuStepEnum.AboutMenu)).AddTo(entity.GetGameObject());
+            break;
 
-          break;
+          case UiElementEnum.MainMenu_PrimaryMenu_AboutButton:
+            entity.Value.GetUnityComponent<Button>().OnClickAsObservable().Subscribe(_ => _currentStep.Value = MainMenuStepEnum.AboutMenu).AddTo(_disposables);
 
-        case UiElementEnum.MainMenu_AboutMenu_BackButton:
-          entity.GetUnityComponent<Button>().OnClickAsObservable().Subscribe(_ => _currentStep.Value = MainMenuStepEnum.PrimaryMenu).AddTo(entity.GetGameObject());
+            break;
 
-          break;
+          case UiElementEnum.MainMenu_AboutMenu:
+            _currentStep.Subscribe(step => entity.Value.GetGameObject().SetActive(step == MainMenuStepEnum.AboutMenu)).AddTo(_disposables);
 
-        case UiElementEnum.Unknown:
-        default:
+            break;
 
-          throw new ArgumentOutOfRangeException();
+          case UiElementEnum.MainMenu_AboutMenu_BackButton:
+            entity.Value.GetUnityComponent<Button>().OnClickAsObservable().Subscribe(_ => _currentStep.Value = MainMenuStepEnum.PrimaryMenu).AddTo(_disposables);
+
+            break;
+
+          case UiElementEnum.Unknown:
+          default:
+
+            throw new ArgumentOutOfRangeException();
+        }
       }
     }
 
-    private IEnumerator Title(TextMeshProUGUI element)
+    /// <inheritdoc />
+    public void StopSystem(IObservableGroup observableGroup)
+    {
+      _disposables.DisposeAll();
+    }
+
+    private IEnumerator TitleCoroutine(TextMeshProUGUI element)
     {
       _currentStep.Value = MainMenuStepEnum.Title;
 
