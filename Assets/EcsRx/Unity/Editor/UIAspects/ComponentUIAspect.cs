@@ -52,9 +52,8 @@ namespace EcsRx.Unity.UIAspects
                 EditorGUILayout.BeginHorizontal();
                 var propertyType = property.PropertyType;
                 var propertyValue = property.GetValue(component, null);
-              Debug.Log($"propertyValue = {propertyValue}");
 
-        var handler = DefaultEditorInputRegistry.GetHandlerFor(propertyType);
+                var handler = DefaultEditorInputRegistry.GetHandlerFor(propertyType);
                 if (handler == null)
                 {
                     Debug.LogWarning("This type is not supported: " + propertyType.Name + " - In component: " + component.GetType().Name);
@@ -62,7 +61,7 @@ namespace EcsRx.Unity.UIAspects
                 }
 
                 var updatedValue = handler.CreateUI(property.Name, propertyValue);
-        Debug.Log($"updatedValue = {updatedValue}");
+        
                 if (updatedValue != null)
                 { property.SetValue(component, updatedValue, null); }
 

@@ -3,6 +3,10 @@
   public enum UiElementEnum
   {
     Unknown,
-    MainMenuTitle
+    MainMenu_Title,
+    MainMenu_PrimaryMenu,
+    MainMenu_PrimaryMenu_AboutButton,
+    MainMenu_AboutMenu,
+    MainMenu_AboutMenu_BackButton
   }
 }
