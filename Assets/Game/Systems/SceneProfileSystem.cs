@@ -1,77 +1,64 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using EcsRx.Events;
 using EcsRx.Extensions;
 using EcsRx.Groups;
 using EcsRx.Groups.Observable;
-using EcsRx.MicroRx.Extensions;
-using EcsRx.Systems;
-using EcsRx.Unity.Extensions;
+using EcsRx.Systems.Custom;
 using Game.Components;
 using Game.Events;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 namespace Game.Systems
 {
-  public class SceneProfileSystem : IManualSystem
+  public class SceneProfileSystem : EventReactionSystem<LoadSceneProfileEvent>
   {
-    private readonly ICollection<IDisposable> _disposables = new List<IDisposable>();
     private readonly List<SceneProfileComponent> _loadedSceneProfileComponents = new List<SceneProfileComponent>();
-    private readonly IEventSystem _eventSystem;
+    private List<SceneProfileComponent> _sceneProfileComponents;
 
 
     /// <inheritdoc />
-    public IGroup Group { get; } = new Group(typeof(SceneProfileComponent));
+    public override IGroup Group { get; } = new Group(typeof(SceneProfileComponent));
 
 
-    public SceneProfileSystem(IEventSystem eventSystem)
+    /// <inheritdoc />
+    public SceneProfileSystem(IEventSystem eventSystem) : base(eventSystem)
     {
-      _eventSystem = eventSystem;
     }
 
     /// <inheritdoc />
-    public void StartSystem(IObservableGroup observableGroup)
+    public override void StartSystem(IObservableGroup observableGroup)
     {
-      this.WaitForScene()
-          .Subscribe(_ =>
-                       {
-                         var sceneProfileComponents = observableGroup.Select(x => x.GetComponent<SceneProfileComponent>()).ToList();
+      base.StartSystem(observableGroup);
 
-                         //_loadedSceneComponents.Add(sceneProfileComponents.Single(x => x.IsMaster));
-
-                         _eventSystem.Receive<LoadSceneProfileEvent>()
-                                     .Subscribe(x =>
-                                                  {
-                                                    var sceneProfileToLoad = sceneProfileComponents.Single(xx => xx.Profile == x.SceneProfile);
-
-                                                    if (!sceneProfileToLoad.IsAdditive)
-                                                    {
-                                                      foreach (var loadedSceneProfileComponent in _loadedSceneProfileComponents)
-                                                      {
-                                                        foreach (var sceneAssetToUnload in loadedSceneProfileComponent.Scenes)
-                                                        {
-                                                          SceneManager.UnloadSceneAsync(sceneAssetToUnload.name);
-                                                        }
-                                                      }
-                                                    }
-
-                                                    foreach (var sceneAsset in sceneProfileToLoad.Scenes)
-                                                    {
-                                                      SceneManager.LoadScene(sceneAsset.name, LoadSceneMode.Additive);
-                                                    }
-
-                                                    _loadedSceneProfileComponents.Add(sceneProfileToLoad);
-                                                  })
-                                     .AddTo(_disposables);
-                       })
-          .AddTo(_disposables);
+      _sceneProfileComponents = observableGroup.Select(x => x.GetComponent<SceneProfileComponent>()).ToList();
+      Debug.Log($"There is {_sceneProfileComponents.Count} scene profiles loaded.");
     }
 
     /// <inheritdoc />
-    public void StopSystem(IObservableGroup observableGroup)
+    public override void EventTriggered(LoadSceneProfileEvent eventData)
     {
-      _disposables.DisposeAll();
+      Debug.Log($"Loading {eventData.SceneProfile} scene profile.");
+      var sceneProfileToLoad = _sceneProfileComponents.Single(x => x.Profile == eventData.SceneProfile);
+
+      if (!sceneProfileToLoad.IsAdditive)
+      {
+        foreach (var loadedSceneProfileComponent in _loadedSceneProfileComponents)
+        {
+          foreach (var sceneAssetToUnload in loadedSceneProfileComponent.Scenes)
+          {
+            SceneManager.UnloadSceneAsync(sceneAssetToUnload.name);
+          }
+        }
+      }
+
+      foreach (var sceneAsset in sceneProfileToLoad.Scenes)
+      {
+        SceneManager.LoadScene(sceneAsset.name, LoadSceneMode.Additive);
+      }
+
+      _loadedSceneProfileComponents.Add(sceneProfileToLoad);
     }
   }
 }

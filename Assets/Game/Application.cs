@@ -6,6 +6,7 @@ using Game.Blueprints;
 using Game.Blueprints.SceneProfiles;
 using Game.Events;
 using Game.Scripts.Enums;
+using Game.Scripts.MethodExtensions;
 using UniRx;
 using UnityEngine;
 
@@ -21,6 +22,8 @@ namespace Game
 
     protected override void RegisterModules()
     {
+      Debug.Log("RegisterModules.");
+
       base.RegisterModules();
 
       //TODO
@@ -31,13 +34,14 @@ namespace Game
 
     protected override void ApplicationStarting()
     {
-      this.BindAllSystemsWithinApplicationScope();
-      this.RegisterAllBoundSystems();
+      Debug.Log("ApplicationStarting.");
     }
 
     /// <inheritdoc />
     protected override void ApplicationStarted()
     {
+      Debug.Log("ApplicationStarted.");
+
       var defaultCollection = CollectionManager.GetCollection();
 
       defaultCollection.CreateEntity(new InputBlueprint());
@@ -50,10 +54,15 @@ namespace Game
         }
       }
 
+      Debug.Log($"There is {_sceneProfileBlueprints.Count} scene profile blueprints loaded and created entity.");
+
       if (_sceneProfileToStart != SceneProfileEnum.None)
       {
-        Observable.EveryUpdate().First().Subscribe(_ => EventSystem.Publish(new LoadSceneProfileEvent(_sceneProfileToStart)));
+        this.WaitForScene().Subscribe(_ => EventSystem.Publish(new LoadSceneProfileEvent(_sceneProfileToStart))).AddTo(this);
       }
+
+      this.BindAllSystemsWithinApplicationScope();
+      this.RegisterAllBoundSystems();
     }
   }
 }
