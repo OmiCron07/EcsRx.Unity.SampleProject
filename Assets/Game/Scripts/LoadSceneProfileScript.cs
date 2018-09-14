@@ -1,5 +1,4 @@
-﻿using EcsRx.Events;
-using EcsRx.Unity.MonoBehaviours;
+﻿using EcsRx.Unity.MonoBehaviours;
 using Game.Events;
 using Game.Scripts.Enums;
 using UnityEngine;
@@ -20,9 +19,9 @@ namespace Game.Scripts
     /// <inheritdoc />
     public override void DependenciesResolved()
     {
-      Assert.IsNotNull(EventSystem, "EventSystem != null");
       Debug.Log("DependenciesResolved");
       Debug.Log($"Injected EventSystem is {(EventSystem == null ? "null" : "not null")}");
+      Assert.IsNotNull(EventSystem, "EventSystem != null");
     }
 
     private void OnEnable()

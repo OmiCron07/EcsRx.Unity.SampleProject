@@ -134,8 +134,7 @@ MonoBehaviour:
   _scriptableObjectInstallers: []
   _autoRun: 1
   _parentNewObjectsUnderRoot: 0
-  _contractNames:
-  - Master
+  _contractNames: []
   _parentContractNames: []
 --- !u!1001 &708873523
 Prefab:
