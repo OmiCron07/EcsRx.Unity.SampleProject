@@ -253,7 +253,7 @@ namespace EcsRx.Unity {
         BoolValue = 6,
         FloatValue = 7,
     }
-    public class JSONClass : JSONNode, IEnumerable
+    public class JSONClass : JSONData, IEnumerable
     {
         private Dictionary<string, JSONNode> m_Dict = new Dictionary<string, JSONNode>();
 
@@ -412,9 +412,58 @@ namespace EcsRx.Unity {
             result += "}" + Environment.NewLine;
             return result;
         }
+
+      /// <inheritdoc />
+      public JSONClass(Vector3 value) : base(value)
+      {
+      }
+
+      /// <inheritdoc />
+      public JSONClass(Vector2 value) : base(value)
+      {
+      }
+
+      /// <inheritdoc />
+      public JSONClass(string aData) : base(aData)
+      {
+      }
+
+      /// <inheritdoc />
+      public JSONClass(string aData, bool forceString) : base(aData, forceString)
+      {
+      }
+
+      /// <inheritdoc />
+      public JSONClass(float aData) : base(aData)
+      {
+      }
+
+      /// <inheritdoc />
+      public JSONClass(double aData) : base(aData)
+      {
+      }
+
+      /// <inheritdoc />
+      public JSONClass(bool aData) : base(aData)
+      {
+      }
+
+      /// <inheritdoc />
+      public JSONClass(int aData) : base(aData)
+      {
+      }
+
+      public JSONClass()
+      {
+        
+      }
     }
     public class JSONData : JSONNode
     {
+      public JSONData()
+      {
+        
+      }
         private string m_Data;
 
         public override string Value

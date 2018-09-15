@@ -68,7 +68,7 @@ namespace EcsRx.Unity.Extensions
 					}
 					if (property.PropertyType == typeof(Vector2))
 					{
-						node.Add(property.Name, new JSONData((Vector2)property.GetValue(component, null)));
+						node.Add(property.Name, new JSONClass((Vector2)property.GetValue(component, null)));
 						continue;
 					}
 					if (property.PropertyType == typeof(Vector2ReactiveProperty))
@@ -76,7 +76,7 @@ namespace EcsRx.Unity.Extensions
 						var reactiveProperty = property.GetValue(component, null) as Vector2ReactiveProperty;
 						if (reactiveProperty == null)
 							reactiveProperty = new Vector2ReactiveProperty ();					
-						node.Add(property.Name, new JSONData((Vector2)reactiveProperty.Value));
+						node.Add(property.Name, new JSONClass((Vector2)reactiveProperty.Value));
 						continue;
 					}
 					if (property.PropertyType == typeof(Vector3))
