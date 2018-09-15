@@ -113,6 +113,59 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1001 &721036672
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 114747176840047026, guid: db1c0724d9db1594e9f21b18db053bb9,
+        type: 2}
+      propertyPath: _sceneProfileBlueprints.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4153516301901122, guid: db1c0724d9db1594e9f21b18db053bb9, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4153516301901122, guid: db1c0724d9db1594e9f21b18db053bb9, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4153516301901122, guid: db1c0724d9db1594e9f21b18db053bb9, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4153516301901122, guid: db1c0724d9db1594e9f21b18db053bb9, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4153516301901122, guid: db1c0724d9db1594e9f21b18db053bb9, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4153516301901122, guid: db1c0724d9db1594e9f21b18db053bb9, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4153516301901122, guid: db1c0724d9db1594e9f21b18db053bb9, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4153516301901122, guid: db1c0724d9db1594e9f21b18db053bb9, type: 2}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114747176840047026, guid: db1c0724d9db1594e9f21b18db053bb9,
+        type: 2}
+      propertyPath: _sceneProfileBlueprints.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: e69b4852232b0f644b1e0e1e46018189,
+        type: 2}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: db1c0724d9db1594e9f21b18db053bb9, type: 2}
+  m_IsPrefabAsset: 0
 --- !u!1 &1075967903
 GameObject:
   m_ObjectHideFlags: 0
@@ -1119,7 +1172,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4768813794315088, guid: 7ed6fc726536d6a4eb7ed16469ca9b01, type: 2}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8195094280623359910, guid: 7ed6fc726536d6a4eb7ed16469ca9b01,
         type: 2}
@@ -5222,5 +5275,5 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

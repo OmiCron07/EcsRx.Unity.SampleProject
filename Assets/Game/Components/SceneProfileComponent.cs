@@ -10,7 +10,6 @@ namespace Game.Components
   public class SceneProfileComponent : IComponent
   {
     public SceneProfileEnum Profile;
-    public bool IsMaster;
     public bool IsAdditive;
     public List<SceneAsset> Scenes;
   }
