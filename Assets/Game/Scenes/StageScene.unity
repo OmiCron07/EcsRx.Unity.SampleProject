@@ -177,7 +177,7 @@ GameObject:
   - component: {fileID: 1075967904}
   - component: {fileID: 1075967906}
   - component: {fileID: 1075967905}
-  m_Layer: 31
+  m_Layer: 9
   m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5182,6 +5182,14 @@ Prefab:
       propertyPath: m_TileMatrixArray.Array.data[0].m_Data.e23
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1278424675534332, guid: 7ed6fc726536d6a4eb7ed16469ca9b01, type: 2}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1552272638340046, guid: 7ed6fc726536d6a4eb7ed16469ca9b01, type: 2}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7ed6fc726536d6a4eb7ed16469ca9b01, type: 2}
   m_IsPrefabAsset: 0
@@ -5232,7 +5240,7 @@ Camera:
   m_GameObject: {fileID: 1870445686}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
+  m_ClearFlags: 3
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
   m_projectionMatrixMode: 1
   m_SensorSize: {x: 36, y: 24}
@@ -5252,7 +5260,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 512
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
