@@ -3,6 +3,7 @@ using EcsRx.Entities;
 using EcsRx.Groups;
 using EcsRx.Systems;
 using Game.Components;
+using UniRx;
 
 namespace Game.Systems
 {
@@ -15,7 +16,7 @@ namespace Game.Systems
     /// <inheritdoc />
     public IObservable<IEntity> ReactToEntity(IEntity entity)
     {
-      return null;
+      return  Observable.EveryUpdate().Select(_ => entity);
     }
 
     /// <inheritdoc />

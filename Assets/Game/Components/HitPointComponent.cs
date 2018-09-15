@@ -4,9 +4,15 @@ using UniRx;
 
 namespace Game.Components
 {
-  [Serializable]
-  public class HitPointComponent : IComponent
+  public class HitPointComponent : IComponent, IDisposable
   {
-    public IntReactiveProperty HitPoint = new IntReactiveProperty();
+    public IntReactiveProperty HitPoint { get; set; } = new IntReactiveProperty();
+
+
+    /// <inheritdoc />
+    public void Dispose()
+    {
+      HitPoint?.Dispose();
+    }
   }
 }

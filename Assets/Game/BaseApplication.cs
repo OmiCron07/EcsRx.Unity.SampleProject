@@ -13,6 +13,12 @@ namespace Game
     [SerializeField] private List<SceneProfileBlueprint> _sceneProfileBlueprints;
 
 
+    protected override void ApplicationStarting()
+    {
+      this.BindAllSystemsWithinApplicationScope();
+      this.RegisterAllBoundSystems();
+    }
+
     /// <inheritdoc />
     protected override void ApplicationStarted()
     {
@@ -29,9 +35,6 @@ namespace Game
           defaultCollection.CreateEntity(sceneProfileBlueprint);
         }
       }
-
-      this.BindAllSystemsWithinApplicationScope();
-      this.RegisterAllBoundSystems();
     }
   }
 }

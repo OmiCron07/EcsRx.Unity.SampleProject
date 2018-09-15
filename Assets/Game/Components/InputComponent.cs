@@ -9,7 +9,7 @@ namespace Game.Components
   {
     public IObservable<Vector2> Movement { get; set; }
 
-    public IObservable<Unit> Fire { get; set; }
+    public IObservable<Unit> Attack { get; set; }
 
 
     public IObservable<Unit> MenuUp { get; set; }
