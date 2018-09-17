@@ -9,6 +9,7 @@ namespace Game.Modules
     public void Setup(IDependencyContainer container)
     {
       container.Bind<PlayerAttackSoundCollection>();
+      container.Bind<FootStepSoundCollection>();
     }
   }
 }

@@ -25,14 +25,14 @@ TextureImporter:
     21300040: Exit
     21300042: Scavengers_SpriteSheet_21
     21300044: Scavengers_SpriteSheet_22
-    21300046: Scavengers_SpriteSheet_23
+    21300046: Block_Root
     21300048: Scavengers_SpriteSheet_24
     21300050: Scavengers_SpriteSheet_25
     21300052: Scavengers_SpriteSheet_26
     21300054: Scavengers_SpriteSheet_27
-    21300056: Scavengers_SpriteSheet_28
-    21300058: Scavengers_SpriteSheet_29
-    21300060: Scavengers_SpriteSheet_30
+    21300056: Block_Rock
+    21300058: Block_Tire
+    21300060: Block_Skull
     21300062: Scavengers_SpriteSheet_31
     21300064: Scavengers_SpriteSheet_32
     21300066: Scavengers_SpriteSheet_33
@@ -599,7 +599,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Scavengers_SpriteSheet_23
+      name: Block_Root
       rect:
         serializedVersion: 2
         x: 224
@@ -699,7 +699,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Scavengers_SpriteSheet_28
+      name: Block_Rock
       rect:
         serializedVersion: 2
         x: 128
@@ -719,7 +719,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Scavengers_SpriteSheet_29
+      name: Block_Tire
       rect:
         serializedVersion: 2
         x: 160
@@ -739,7 +739,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Scavengers_SpriteSheet_30
+      name: Block_Skull
       rect:
         serializedVersion: 2
         x: 192
