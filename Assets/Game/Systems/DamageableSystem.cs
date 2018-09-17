@@ -16,7 +16,7 @@ namespace Game.Systems
     /// <inheritdoc />
     public IObservable<IEntity> ReactToEntity(IEntity entity)
     {
-      return  Observable.EveryUpdate().Select(_ => entity);
+      return Observable.EveryUpdate().Select(_ => entity);
     }
 
     /// <inheritdoc />

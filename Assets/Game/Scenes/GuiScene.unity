@@ -571,6 +571,18 @@ PrefabInstance:
       propertyPath: _parentContractNames.Array.data[0]
       value: Master
       objectReference: {fileID: 0}
+    - target: {fileID: 8574985199891559816, guid: db1c0724d9db1594e9f21b18db053bb9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 679789617051017018, guid: db1c0724d9db1594e9f21b18db053bb9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6925973161488836203, guid: db1c0724d9db1594e9f21b18db053bb9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: db1c0724d9db1594e9f21b18db053bb9, type: 3}
 --- !u!1 &1886925361

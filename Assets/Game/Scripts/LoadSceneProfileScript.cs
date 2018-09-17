@@ -19,8 +19,6 @@ namespace Game.Scripts
     /// <inheritdoc />
     public override void DependenciesResolved()
     {
-      Debug.Log("DependenciesResolved");
-      Debug.Log($"Injected EventSystem is {(EventSystem == null ? "null" : "not null")}");
       Assert.IsNotNull(EventSystem, "EventSystem != null");
     }
 

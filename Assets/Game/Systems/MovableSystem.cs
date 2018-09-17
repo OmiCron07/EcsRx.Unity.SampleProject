@@ -33,7 +33,7 @@ namespace Game.Systems
       var movableComponent = entity.GetComponent<MovableComponent>();
       var rigidbody = entity.GetUnityComponent<Rigidbody2D>();
 
-      rigidbody.MovePosition(rigidbody.position + movableComponent.Movement.Value * movableComponent.Speed * Time.deltaTime);
+      rigidbody.MovePosition(rigidbody.position + movableComponent.Movement.Value * movableComponent.Speed * Time.fixedDeltaTime);
     }
   }
 }

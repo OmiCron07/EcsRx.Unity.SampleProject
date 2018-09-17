@@ -1,0 +1,108 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Default Local Group
+  m_EditorClassIdentifier: 
+  m_name: Default Local Group
+  m_data:
+    m_serializedData:
+    - m_assemblyName: mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+      m_className: System.String
+      m_data: 3bd779ec12ebc504da9df00ce2db3133
+      m_key: BuildPath
+    - m_assemblyName: mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+      m_className: System.String
+      m_data: ea34e8009125aed42a4b21498b6fb6bf
+      m_key: LoadPath
+    - m_assemblyName: Unity.Addressables.Editor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+      m_className: UnityEditor.AddressableAssets.BundledAssetGroupProcessor+BundleMode
+      m_data: PackTogether
+      m_key: BundleMode
+    - m_assemblyName: mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+      m_className: System.Boolean
+      m_data: True
+      m_key: StaticContent
+  m_guid: 03a766b052f509f448076cdcf7b16ac0
+  m_processorAssembly: Unity.Addressables.Editor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_processorClass: UnityEditor.AddressableAssets.BundledAssetGroupProcessor
+  m_serializeEntries:
+  - m_guid: 062161c1897a54088a5430f8c197e1b8
+    m_address: scavengers_fruit2
+    m_readOnly: 0
+    m_serializedLabels: []
+  - m_guid: 0db8cac2749584a009540aa5671ee80d
+    m_address: scavengers_enemy1
+    m_readOnly: 0
+    m_serializedLabels: []
+  - m_guid: 114514a3b3697484ebaa08f7fbf842d3
+    m_address: scavengers_enemy2
+    m_readOnly: 0
+    m_serializedLabels: []
+  - m_guid: 1cb61f83d60374c7389bb547431919e3
+    m_address: scavengers_fruit1
+    m_readOnly: 0
+    m_serializedLabels: []
+  - m_guid: 2d75080d0851d4613ada1117d91ee417
+    m_address: scavengers_music
+    m_readOnly: 0
+    m_serializedLabels: []
+  - m_guid: 4c2332bc8245b474dad63074059bb755
+    m_address: scavengers_chop1
+    m_readOnly: 0
+    m_serializedLabels:
+    - Audio
+    - PlayerAttack
+    - PlayerAttackSound
+  - m_guid: 892962212a4b74d1c9f578a3b6ea6439
+    m_address: scavengers_footstep1
+    m_readOnly: 0
+    m_serializedLabels: []
+  - m_guid: 9f15b1a680cfdae4b91a091766aff87d
+    m_address: GameplaySceneProfile
+    m_readOnly: 0
+    m_serializedLabels:
+    - SceneProfile
+  - m_guid: a826bc3d758db43d6ae9caf415b63d1d
+    m_address: scavengers_footstep2
+    m_readOnly: 0
+    m_serializedLabels: []
+  - m_guid: b6b608537288246c9a464915db27bf52
+    m_address: scavengers_soda1
+    m_readOnly: 0
+    m_serializedLabels: []
+  - m_guid: bcb9dda73ee914d3e8f252895f73f461
+    m_address: scavengers_soda2
+    m_readOnly: 0
+    m_serializedLabels: []
+  - m_guid: c8c60df774d63584389691cd9400280a
+    m_address: MainMenuSceneProfile
+    m_readOnly: 0
+    m_serializedLabels:
+    - SceneProfile
+  - m_guid: e2beefeb2273f4efe992adf5b8d67c29
+    m_address: scavengers_die
+    m_readOnly: 0
+    m_serializedLabels: []
+  - m_guid: e69b4852232b0f644b1e0e1e46018189
+    m_address: GameOverSceneProfile
+    m_readOnly: 0
+    m_serializedLabels:
+    - SceneProfile
+  - m_guid: f6aaac83be9e0493493aace800b76619
+    m_address: scavengers_chop2
+    m_readOnly: 0
+    m_serializedLabels:
+    - Audio
+    - PlayerAttack
+    - PlayerAttackSound
+  m_readOnly: 0
+  m_settings: {fileID: 11400000, guid: 3073b6d444c6875438e674e1049fab48, type: 2}

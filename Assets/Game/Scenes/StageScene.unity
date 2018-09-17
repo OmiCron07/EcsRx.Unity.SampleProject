@@ -167,6 +167,14 @@ PrefabInstance:
       propertyPath: _contractNames.Array.data[0]
       value: Master
       objectReference: {fileID: 0}
+    - target: {fileID: 4205542510864964447, guid: db1c0724d9db1594e9f21b18db053bb9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6925973161488836203, guid: db1c0724d9db1594e9f21b18db053bb9, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: db1c0724d9db1594e9f21b18db053bb9, type: 3}
 --- !u!1 &1075967903
@@ -4449,8 +4457,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7fb28ec665541aeb6d2c59412d4d9bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _sceneProfileBlueprints:
-  - {fileID: 11400000, guid: e69b4852232b0f644b1e0e1e46018189, type: 2}
 --- !u!4 &1439260060
 Transform:
   m_ObjectHideFlags: 0

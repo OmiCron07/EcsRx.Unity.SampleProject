@@ -1,19 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
+using EcsRx.Entities;
+using EcsRx.Events;
 using EcsRx.Extensions;
 using EcsRx.Groups;
-using EcsRx.Groups.Observable;
 using EcsRx.Systems;
-using EcsRx.Unity.Extensions;
 using Game.Components;
+using Game.Events;
 using UniRx;
-using UnityEngine;
 
 namespace Game.Systems
 {
-  public class PlayerSystem : IManualSystem
+  public class PlayerSystem : ISetupSystem, ITeardownSystem
   {
+    private readonly IEventSystem _eventSystem;
     private readonly ICollection<IDisposable> _disposables = new List<IDisposable>();
 
 
@@ -21,23 +21,27 @@ namespace Game.Systems
     public IGroup Group { get; } = new Group(typeof(PlayerComponent));
 
 
-    /// <inheritdoc />
-    public void StartSystem(IObservableGroup observableGroup)
+    public PlayerSystem(IEventSystem eventSystem)
     {
-      this.WaitForScene().Subscribe(_ =>
-                                      {
-                                        var entity = observableGroup.First();
-                                        var inputComponent = entity.GetComponent<InputComponent>();
-                                        var movableComponent = entity.GetComponent<MovableComponent>();
-
-                                        inputComponent.Movement.Subscribe(x => movableComponent.Movement.Value = x).AddTo(_disposables);
-                                      });
+      _eventSystem = eventSystem;
     }
 
     /// <inheritdoc />
-    public void StopSystem(IObservableGroup observableGroup)
+    public void Setup(IEntity entity)
+    {
+      var inputComponent = entity.GetComponent<InputComponent>();
+      var movableComponent = entity.GetComponent<MovableComponent>();
+      var damageComponent = entity.GetComponent<DamageComponent>();
+
+      inputComponent.Movement.Subscribe(x => movableComponent.Movement.Value = x).AddTo(_disposables);
+      inputComponent.Attack.ThrottleFirst(TimeSpan.FromMilliseconds(damageComponent.Throttle)).Subscribe(__ => _eventSystem.Publish(new AttackEvent(entity))).AddTo(_disposables);
+    }
+
+    /// <inheritdoc />
+    public void Teardown(IEntity entity)
     {
       _disposables.DisposeAll();
+      entity.Dispose();
     }
   }
 }

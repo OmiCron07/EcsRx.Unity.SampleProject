@@ -409,7 +409,7 @@ MonoBehaviour:
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
-    m_FadeDuration: 0.1
+    m_FadeDuration: 0
   m_SpriteState:
     m_HighlightedSprite: {fileID: 0}
     m_PressedSprite: {fileID: 0}
@@ -673,8 +673,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8baaa9c22812a7439c24c1386e8cb7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _sceneProfileBlueprints:
-  - {fileID: 11400000, guid: 9f15b1a680cfdae4b91a091766aff87d, type: 2}
 --- !u!4 &1477904923
 Transform:
   m_ObjectHideFlags: 0
@@ -913,7 +911,7 @@ MonoBehaviour:
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
-    m_FadeDuration: 0.1
+    m_FadeDuration: 0
   m_SpriteState:
     m_HighlightedSprite: {fileID: 0}
     m_PressedSprite: {fileID: 0}
@@ -1666,6 +1664,14 @@ PrefabInstance:
       propertyPath: _sceneProfileBlueprints.Array.data[0]
       value: 
       objectReference: {fileID: 11400000, guid: 9f15b1a680cfdae4b91a091766aff87d, type: 2}
+    - target: {fileID: 6925973161488836203, guid: db1c0724d9db1594e9f21b18db053bb9, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4205542510864964447, guid: db1c0724d9db1594e9f21b18db053bb9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: db1c0724d9db1594e9f21b18db053bb9, type: 3}
 --- !u!1 &2012231392
@@ -1734,7 +1740,7 @@ MonoBehaviour:
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
-    m_FadeDuration: 0.1
+    m_FadeDuration: 0
   m_SpriteState:
     m_HighlightedSprite: {fileID: 0}
     m_PressedSprite: {fileID: 0}

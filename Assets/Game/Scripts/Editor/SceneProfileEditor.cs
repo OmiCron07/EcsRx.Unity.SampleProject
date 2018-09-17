@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using Game.Blueprints.SceneProfiles;
+using Game.Scripts.ScriptableObjects;
 using UnityEditor;
 using UnityEditor.Callbacks;
 using UnityEditor.SceneManagement;
@@ -15,9 +15,9 @@ namespace Game.Scripts.Editor
     {
       var obj = EditorUtility.InstanceIDToObject(id);
 
-      if (obj is SceneProfileBlueprint)
+      if (obj is SceneProfile)
       {
-        OpenMultiscene((SceneProfileBlueprint)obj, Event.current.alt);
+        OpenMultiscene((SceneProfile) obj, Event.current.alt);
 
         return true;
       }
@@ -40,7 +40,7 @@ namespace Game.Scripts.Editor
       }
     }
 
-    private static void OpenMultiscene(SceneProfileBlueprint obj, bool additive)
+    private static void OpenMultiscene(SceneProfile obj, bool additive)
     {
       Scene activeScene = default(Scene);
 
@@ -50,9 +50,9 @@ namespace Game.Scripts.Editor
         var inFirstUnloadedScenes = true;
         Scene firstLoadedScene = default(Scene);
 
-        for (int i = 0; i < obj.SceneProfile.Scenes.Count; i++)
+        for (int i = 0; i < obj.Scenes.Count; i++)
         {
-          var info = obj.SceneProfile.Scenes[i];
+          var info = obj.Scenes[i];
 
           if (info == null) continue;
 
@@ -72,7 +72,7 @@ namespace Game.Scripts.Editor
             }
             else
             {
-              inFirstUnloadedScenes = false;
+              inFirstUnloadedScenes     = false;
               exitedFirstUnloadedScenes = true;
             }
           }
@@ -91,7 +91,7 @@ namespace Game.Scripts.Editor
 
           var scene = EditorSceneManager.OpenScene(path, mode);
 
-          if (isActiveScene) activeScene = scene;
+          if (isActiveScene) activeScene                  = scene;
           if (exitedFirstUnloadedScenes) firstLoadedScene = scene;
         }
 
