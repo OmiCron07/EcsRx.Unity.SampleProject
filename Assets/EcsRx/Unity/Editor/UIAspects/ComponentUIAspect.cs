@@ -61,7 +61,7 @@ namespace EcsRx.Unity.UIAspects
                 }
 
                 var updatedValue = handler.CreateUI(property.Name, propertyValue);
-        
+
                 if (updatedValue != null)
                 { property.SetValue(component, updatedValue, null); }
 

@@ -5,7 +5,7 @@ using EcsRx.Systems;
 using ModestTree;
 using Zenject;
 
-namespace EcsRx.Zenject.Installers
+namespace EcsRx.Zenject.Helpers
 {
     public class BindSystemsInNamespace
     {

@@ -22,7 +22,7 @@ namespace EcsRx.Unity.Extensions
             return castView.GetComponent<T>();
         }
 
-        public static T AddUnityComponent<T>(this IEntity entity) where T : Behaviour
+        public static T AddUnityComponent<T>(this IEntity entity) where T : Component
         {
             if (!entity.HasComponent<ViewComponent>())
             { throw new Exception("Entity has no ViewComponent, ensure a valid ViewComponent is applied with an active View"); }
