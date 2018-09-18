@@ -1,5 +1,4 @@
 ﻿using EcsRx.Zenject;
-using EcsRx.Zenject.Extensions;
 using Game.Modules;
 
 namespace Game
@@ -12,15 +11,6 @@ namespace Game
       base.RegisterModules();
       
       DependencyContainer.LoadModule<SceneProfileModule>();
-    }
-
-    /// <inheritdoc />
-    protected override void ApplicationStarting()
-    {
-      //this.BindAndRegisterSystem<SceneProfileSystem>();
-
-      this.BindAllSystemsWithinApplicationScope();
-      this.RegisterAllBoundSystems();
     }
 
     /// <inheritdoc />

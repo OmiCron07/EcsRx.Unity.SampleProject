@@ -5,6 +5,7 @@ using EcsRx.Groups;
 using EcsRx.Systems;
 using EcsRx.Unity.Extensions;
 using Game.Components;
+using Game.Computeds;
 using Game.SceneCollections;
 using Game.Scripts.MethodExtensions;
 using UniRx;
@@ -15,15 +16,17 @@ namespace Game.Systems
   public class MovableSystem : IReactToEntitySystem
   {
     private readonly FootStepSoundCollection _footStepSounds;
+    private readonly IMovementDistanceComputed _movementDistanceComputed;
 
 
     /// <inheritdoc />
     public IGroup Group { get; } = new Group(typeof(MovableComponent));
 
 
-    public MovableSystem(FootStepSoundCollection footStepSounds)
+    public MovableSystem(FootStepSoundCollection footStepSounds, IMovementDistanceComputed movementDistanceComputed)
     {
       _footStepSounds = footStepSounds;
+      _movementDistanceComputed = movementDistanceComputed;
     }
 
     /// <inheritdoc />
@@ -48,8 +51,11 @@ namespace Game.Systems
       var spriteRenderer = entity.GetUnityComponent<SpriteRenderer>();
       spriteRenderer.flipX = movableComponent.Movement.Value.x < 0;
 
-      var audioSource = entity.GetUnityComponent<AudioSource>();
-      audioSource.PlayOneShot(_footStepSounds.TakeRandom());
+      if (_movementDistanceComputed.Value)
+      {
+        var audioSource = entity.GetUnityComponent<AudioSource>();
+        audioSource.PlayOneShot(_footStepSounds.TakeRandom());
+      }
     }
   }
 }
