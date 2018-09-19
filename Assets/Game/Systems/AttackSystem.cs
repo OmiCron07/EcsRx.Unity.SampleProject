@@ -23,7 +23,7 @@ namespace Game.Systems
     /// <inheritdoc />
     public override void EventTriggered(AttackEvent eventData)
     {
-      var spriteRenderer = eventData.Entity.GetUnityComponent<Animator>();
+      var spriteRenderer = eventData.Entity.GetGameObject().GetComponentInChildren<Animator>();
       spriteRenderer.SetTrigger(CharacterAnimationConstants.Attack);
 
       var audioSource = eventData.Entity.GetUnityComponent<AudioSource>();

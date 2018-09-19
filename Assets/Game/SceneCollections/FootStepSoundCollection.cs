@@ -8,7 +8,7 @@ namespace Game.SceneCollections
   {
     public FootStepSoundCollection()
     {
-      Addressables.LoadAssets<AudioClip>("PlayerAttackSound", x => Add(x.Result));
+      Addressables.LoadAssets<AudioClip>("FootStepSound", x => Add(x.Result));
     }
   }
 }

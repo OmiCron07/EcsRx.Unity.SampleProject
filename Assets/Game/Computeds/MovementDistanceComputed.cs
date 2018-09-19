@@ -44,7 +44,7 @@ namespace Game.Computeds
       }
 
       float magnitude = (currentMovement.Value - _lastMovement).magnitude;
-      Debug.Log($"Current: {currentMovement}; Last: {_lastMovement}: Ma: {magnitude}");
+      //Debug.Log($"Current: {currentMovement}; Last: {_lastMovement}: Ma: {magnitude}");
       if (magnitude >= 1f)
       {
         _lastMovement = currentMovement.Value;

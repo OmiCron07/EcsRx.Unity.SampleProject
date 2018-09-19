@@ -36,7 +36,7 @@ namespace Game.Systems
                                                                        {
                                                                          var movableComponent = x.GetComponent<MovableComponent>();
 
-                                                                         return movableComponent.Speed != 0 && movableComponent.Movement.Value != Vector2.zero;
+                                                                         return movableComponent.Speed != 0;
                                                                        });
     }
 
@@ -44,11 +44,20 @@ namespace Game.Systems
     public void Process(IEntity entity)
     {
       var movableComponent = entity.GetComponent<MovableComponent>();
+
+      var animator = entity.GetGameObject().GetComponentInChildren<Animator>();
+      animator.SetBool("IsMoving", movableComponent.Movement.Value.magnitude > 0f);
+
+      if (movableComponent.Movement.Value == Vector2.zero)
+      {
+        return;
+      }
+
       var rigidbody = entity.GetUnityComponent<Rigidbody2D>();
 
       rigidbody.MovePosition(rigidbody.position + movableComponent.Movement.Value * movableComponent.Speed * Time.fixedDeltaTime);
 
-      var spriteRenderer = entity.GetUnityComponent<SpriteRenderer>();
+      var spriteRenderer = entity.GetGameObject().GetComponentInChildren<SpriteRenderer>();
       spriteRenderer.flipX = movableComponent.Movement.Value.x < 0;
 
       if (_movementDistanceComputed.Value)
