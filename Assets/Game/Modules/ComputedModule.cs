@@ -1,9 +1,4 @@
-﻿using System.Linq;
-using EcsRx.Extensions;
-using EcsRx.Infrastructure.Dependencies;
-using EcsRx.Infrastructure.Extensions;
-using Game.Components;
-using Game.Computeds;
+﻿using EcsRx.Infrastructure.Dependencies;
 
 namespace Game.Modules
 {
@@ -11,15 +6,15 @@ namespace Game.Modules
   {
     public void Setup(IDependencyContainer container)
     {
-      container.Bind<IMovementDistanceComputed>(c =>
-                                                {
-                                                  c.ToMethod(x =>
-                                                               {
-                                                                 var observableGroup = x.ResolveObservableGroup(typeof(PlayerComponent), typeof(MovableComponent));
+      //container.Bind<IMovementDistanceComputed>(c =>
+      //                                          {
+      //                                            c.ToMethod(x =>
+      //                                                         {
+      //                                                           var observableGroup = x.ResolveObservableGroup(typeof(PlayerComponent), typeof(MovableComponent));
 
-                                                                 return new MovementDistanceComputed(observableGroup);
-                                                               });
-                                                });
+      //                                                           return new MovementDistanceComputed(observableGroup);
+      //                                                         });
+      //                                          });
     }
   }
 }
