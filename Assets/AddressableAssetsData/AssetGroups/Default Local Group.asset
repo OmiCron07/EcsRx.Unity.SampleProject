@@ -38,7 +38,9 @@ MonoBehaviour:
   - m_guid: 062161c1897a54088a5430f8c197e1b8
     m_address: scavengers_fruit2
     m_readOnly: 0
-    m_serializedLabels: []
+    m_serializedLabels:
+    - Audio
+    - ApplePickupSound
   - m_guid: 0db8cac2749584a009540aa5671ee80d
     m_address: scavengers_enemy1
     m_readOnly: 0
@@ -50,7 +52,9 @@ MonoBehaviour:
   - m_guid: 1cb61f83d60374c7389bb547431919e3
     m_address: scavengers_fruit1
     m_readOnly: 0
-    m_serializedLabels: []
+    m_serializedLabels:
+    - Audio
+    - ApplePickupSound
   - m_guid: 2d75080d0851d4613ada1117d91ee417
     m_address: scavengers_music
     m_readOnly: 0
@@ -65,7 +69,9 @@ MonoBehaviour:
   - m_guid: 892962212a4b74d1c9f578a3b6ea6439
     m_address: scavengers_footstep1
     m_readOnly: 0
-    m_serializedLabels: []
+    m_serializedLabels:
+    - Audio
+    - FootStepSound
   - m_guid: 9f15b1a680cfdae4b91a091766aff87d
     m_address: GameplaySceneProfile
     m_readOnly: 0
@@ -74,15 +80,21 @@ MonoBehaviour:
   - m_guid: a826bc3d758db43d6ae9caf415b63d1d
     m_address: scavengers_footstep2
     m_readOnly: 0
-    m_serializedLabels: []
+    m_serializedLabels:
+    - Audio
+    - FootStepSound
   - m_guid: b6b608537288246c9a464915db27bf52
     m_address: scavengers_soda1
     m_readOnly: 0
-    m_serializedLabels: []
+    m_serializedLabels:
+    - Audio
+    - SodaPickupSound
   - m_guid: bcb9dda73ee914d3e8f252895f73f461
     m_address: scavengers_soda2
     m_readOnly: 0
-    m_serializedLabels: []
+    m_serializedLabels:
+    - Audio
+    - SodaPickupSound
   - m_guid: c8c60df774d63584389691cd9400280a
     m_address: MainMenuSceneProfile
     m_readOnly: 0

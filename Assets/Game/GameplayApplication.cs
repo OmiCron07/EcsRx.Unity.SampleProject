@@ -10,7 +10,7 @@ namespace Game
     {
       base.RegisterModules();
 
-      DependencyContainer.LoadModule<GameplayModule>();
+      DependencyContainer.LoadModule<SoundModule>();
       DependencyContainer.LoadModule<ComputedModule>();
     }
 
