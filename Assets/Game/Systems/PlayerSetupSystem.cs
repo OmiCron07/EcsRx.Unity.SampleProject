@@ -42,7 +42,9 @@ namespace Game.Systems
       var gameObject = entity.GetGameObject();
       var onTriggerEnter2DAsObservable = gameObject.OnTriggerEnter2DAsObservable();
 
-      onTriggerEnter2DAsObservable.Where(x => x.GetComponent<EntityView>().Entity.HasComponent<PickupableComponent>()).Subscribe(x => _eventSystem.Publish(new PickupEvent(entity, x.GetComponent<EntityView>().Entity))).AddTo(_disposables);
+      onTriggerEnter2DAsObservable.Where(x => x.GetComponent<EntityView>().Entity.HasComponent<PickupableComponent>())
+                                  .Subscribe(x => _eventSystem.Publish(new PickupEvent(entity, x.GetComponent<EntityView>().Entity)))
+                                  .AddTo(_disposables);
     }
 
     /// <inheritdoc />

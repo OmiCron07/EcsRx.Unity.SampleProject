@@ -1,6 +1,5 @@
 ﻿using EcsRx.Unity.MonoBehaviours;
 using Game.Events;
-using UnityEngine;
 
 namespace Game.Scripts
 {

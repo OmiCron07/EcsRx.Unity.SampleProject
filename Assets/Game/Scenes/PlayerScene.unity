@@ -124,7 +124,7 @@ GameObject:
   - component: {fileID: 158991379}
   - component: {fileID: 158991380}
   - component: {fileID: 158991375}
-  - component: {fileID: 158991381}
+  - component: {fileID: 158991376}
   m_Layer: 8
   m_Name: Player
   m_TagString: Untagged
@@ -153,73 +153,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!4 &158991377
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 158991374}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.199, y: 0.214, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 701933468}
-  m_Father: {fileID: 0}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &158991379
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 158991374}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 79bcb4af4db88c94a82dab9e20ecb6e0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CollectionName: 
-  Components:
-  - Game.Components.HitPointComponent
-  - Game.Components.DamageComponent
-  - Game.Components.InputComponent
-  - Game.Components.MovableComponent
-  - Game.Components.PlayerComponent
-  ComponentEditorState:
-  - "{\r\n\t\"HitPoint\":25}\r\n"
-  - "{\r\n\t\"Damage\":1\t, \r\n\t\"Throttle\":500}\r\n"
-  - "{\r\n}\r\n"
-  - "{\r\n\t\"Speed\":3\t, \r\n\t\"Movement\":\t{\r\n\t\t\"x\":0\t\t, \r\n\t\t\"y\":0\t}\r\n}\r\n"
-  - "{\r\n}\r\n"
---- !u!61 &158991380
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 158991374}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 6200000, guid: cbeb256fe0dbe8c4590166241ae37aab, type: 2}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.005}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.32, y: 0.32}
-    newSize: {x: 0.32, y: 0.32}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.24, y: 0.32}
-  m_EdgeRadius: 0
---- !u!82 &158991381
+--- !u!82 &158991376
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -315,6 +249,74 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!4 &158991377
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 158991374}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.199, y: 0.214, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 701933468}
+  m_Father: {fileID: 0}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &158991379
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 158991374}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79bcb4af4db88c94a82dab9e20ecb6e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollectionName: 
+  Components:
+  - Game.Components.HitPointComponent
+  - Game.Components.DamageComponent
+  - Game.Components.InputComponent
+  - Game.Components.MovableComponent
+  - Game.Components.PlayerComponent
+  - Game.Components.AudioSourceComponent
+  ComponentEditorState:
+  - "{\r\n\t\"HitPoint\":25}\r\n"
+  - "{\r\n\t\"Damage\":1\t, \r\n\t\"Throttle\":500}\r\n"
+  - "{\r\n}\r\n"
+  - "{\r\n\t\"Speed\":3\t, \r\n\t\"Movement\":\t{\r\n\t\t\"x\":0\t\t, \r\n\t\t\"y\":0\t}\r\n}\r\n"
+  - "{\r\n}\r\n"
+  - "{\r\n}\r\n"
+--- !u!61 &158991380
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 158991374}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 6200000, guid: cbeb256fe0dbe8c4590166241ae37aab, type: 2}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0.005}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.32, y: 0.32}
+    newSize: {x: 0.32, y: 0.32}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.24, y: 0.32}
+  m_EdgeRadius: 0
 --- !u!1 &701933467
 GameObject:
   m_ObjectHideFlags: 0

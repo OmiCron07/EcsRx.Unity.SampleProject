@@ -1,8 +1,6 @@
 ﻿using EcsRx.Events;
-using EcsRx.Groups;
 using EcsRx.Systems.Custom;
 using EcsRx.Unity.Extensions;
-using Game.Components;
 using Game.Events;
 using Game.SceneCollections;
 using Game.Scripts.MethodExtensions;
