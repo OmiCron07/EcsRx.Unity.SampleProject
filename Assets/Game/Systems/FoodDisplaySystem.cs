@@ -9,6 +9,7 @@ using EcsRx.Extensions;
 using EcsRx.Groups;
 using EcsRx.Systems;
 using EcsRx.Unity.Extensions;
+using Game.Blueprints;
 using Game.Components;
 using Game.Events;
 using Game.Scripts.Enums;
@@ -27,6 +28,7 @@ namespace Game.Systems
 
     /// <inheritdoc />
     public IGroup Group { get; } = new Group(typeof(FoodDisplayComponent));
+
 
     public FoodDisplaySystem(IEntityCollectionManager entityCollectionManager, IEventSystem eventSystem)
     {
@@ -51,24 +53,36 @@ namespace Game.Systems
 
                                             break;
 
-                                          case FoodDisplayTypeEnum.PickupFoodAmount:
-                                            _eventSystem.Receive<PickupEvent>()
-                                                        .Where(x => x.PickupableEntity.HasComponent<FoodComponent>())
-                                                        .Subscribe(x =>
-                                                                     {
-                                                                       textComponent.SetText($"+{x.PickupableEntity.GetComponent<FoodComponent>().Amount}");
-                                                                       textComponent.transform.parent.position = x.PickupableEntity.GetGameObject().transform.position;
-                                                                       entity.GetUnityComponent<Animator>().SetTrigger("PickedFood");
-                                                                     })
-                                                        .AddTo(_disposables);
+                                          //case FoodDisplayTypeEnum.PickupFoodAmount:
+                                          //  _eventSystem.Receive<PickupEvent>()
+                                          //              .Where(x => x.PickupableEntity.HasComponent<FoodComponent>())
+                                          //              .Subscribe(x =>
+                                          //                           {
+                                          //                             textComponent.SetText($"+{x.PickupableEntity.GetComponent<FoodComponent>().Amount}");
+                                          //                             textComponent.transform.parent.position = x.PickupableEntity.GetGameObject().transform.position;
+                                          //                             entity.GetUnityComponent<Animator>().SetTrigger("PickedFood");
+                                          //                           })
+                                          //              .AddTo(_disposables);
 
-                                            break;
+                                          //  break;
 
                                           case FoodDisplayTypeEnum.Unknown:
                                           default:
 
                                             throw new ArgumentOutOfRangeException();
                                         }
+
+                                        _eventSystem.Receive<PickupEvent>()
+                                                    .Where(x => x.PickupableEntity.HasComponent<FoodComponent>())
+                                                    .Subscribe(x =>
+                                                                 {
+                                                                   var foodDisplayEntity = _entityCollectionManager.GetCollection().CreateEntity(new FoodDisplayBlueprint());
+                                                                   var textComponent2 = foodDisplayEntity.GetGameObject().GetComponentInChildren<TextMeshProUGUI>();
+                                                                   textComponent2.SetText($"+{x.PickupableEntity.GetComponent<FoodComponent>().Amount}");
+                                                                   textComponent2.transform.parent.position = x.PickupableEntity.GetGameObject().transform.position;
+                                                                   textComponent2.GetComponent<Animator>().SetTrigger("PickedFood");
+                                                                 })
+                                                    .AddTo(_disposables);
                                       });
     }
 
