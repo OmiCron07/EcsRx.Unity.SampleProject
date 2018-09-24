@@ -10,7 +10,7 @@ namespace Game
     {
       base.RegisterModules();
       
-      DependencyContainer.LoadModule<SceneProfileModule>();
+      DependencyContainer.LoadModule<CollectionModule>();
     }
 
     /// <inheritdoc />

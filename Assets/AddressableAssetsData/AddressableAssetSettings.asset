@@ -64,4 +64,5 @@ MonoBehaviour:
     - FootStepSound
     - ApplePickupSound
     - SodaPickupSound
+    - Prefab
   m_activeProfileId: e91e93f90495d1f4d93fbabce117058f

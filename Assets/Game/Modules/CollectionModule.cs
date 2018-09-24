@@ -1,15 +1,15 @@
 ﻿using EcsRx.Infrastructure.Dependencies;
 using Game.SceneCollections;
-using UnityEngine;
 
 namespace Game.Modules
 {
-  public class SceneProfileModule : IDependencyModule
+  public class CollectionModule : IDependencyModule
   {
     /// <inheritdoc />
     public void Setup(IDependencyContainer container)
     {
       container.Bind<SceneProfileCollection>();
+      container.Bind<PrefabCollection>();
     }
   }
 }
