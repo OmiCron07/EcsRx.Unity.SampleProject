@@ -124,6 +124,7 @@ GameObject:
   - component: {fileID: 158991379}
   - component: {fileID: 158991380}
   - component: {fileID: 158991375}
+  - component: {fileID: 158991378}
   - component: {fileID: 158991376}
   m_Layer: 8
   m_Name: Player
@@ -264,6 +265,14 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!81 &158991378
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 158991374}
+  m_Enabled: 1
 --- !u!114 &158991379
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -436,7 +445,8 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 114239279963949608, guid: db1c0724d9db1594e9f21b18db053bb9, type: 3}
+    - target: {fileID: 114239279963949608, guid: db1c0724d9db1594e9f21b18db053bb9,
+        type: 3}
       propertyPath: _parentContractNames.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -488,23 +498,28 @@ PrefabInstance:
       propertyPath: m_Name
       value: SceneSetup
       objectReference: {fileID: 0}
-    - target: {fileID: 114239279963949608, guid: db1c0724d9db1594e9f21b18db053bb9, type: 3}
+    - target: {fileID: 114239279963949608, guid: db1c0724d9db1594e9f21b18db053bb9,
+        type: 3}
       propertyPath: _parentNewObjectsUnderRoot
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 114239279963949608, guid: db1c0724d9db1594e9f21b18db053bb9, type: 3}
+    - target: {fileID: 114239279963949608, guid: db1c0724d9db1594e9f21b18db053bb9,
+        type: 3}
       propertyPath: _parentContractNames.Array.data[0]
       value: Master
       objectReference: {fileID: 0}
-    - target: {fileID: 6925973161488836203, guid: db1c0724d9db1594e9f21b18db053bb9, type: 3}
+    - target: {fileID: 6925973161488836203, guid: db1c0724d9db1594e9f21b18db053bb9,
+        type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 679789617051017018, guid: db1c0724d9db1594e9f21b18db053bb9, type: 3}
+    - target: {fileID: 679789617051017018, guid: db1c0724d9db1594e9f21b18db053bb9,
+        type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8574985199891559816, guid: db1c0724d9db1594e9f21b18db053bb9, type: 3}
+    - target: {fileID: 8574985199891559816, guid: db1c0724d9db1594e9f21b18db053bb9,
+        type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
@@ -754,7 +769,7 @@ MonoBehaviour:
   - Game.Components.DamageComponent
   ComponentEditorState:
   - "{\r\n\t\"HitPoint\":2}\r\n"
-  - "{\r\n\t\"Damage\":1}\r\n"
+  - "{\r\n\t\"Damage\":1\t, \r\n\t\"Throttle\":0}\r\n"
 --- !u!61 &1547306651
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -1,4 +1,5 @@
 ﻿using EcsRx.Infrastructure.Dependencies;
+using EcsRx.Infrastructure.Extensions;
 using Game.SceneCollections;
 
 namespace Game.Modules
@@ -8,8 +9,11 @@ namespace Game.Modules
     /// <inheritdoc />
     public void Setup(IDependencyContainer container)
     {
-      container.Bind<SceneProfileCollection>();
+      container.Bind<ApplePickupSoundCollection>();
+      container.Bind<FootStepSoundCollection>();
+      container.Bind<PlayerAttackSoundCollection>();
       container.Bind<PrefabCollection>();
+      container.Bind<SodaPickupSoundCollection>();
     }
   }
 }

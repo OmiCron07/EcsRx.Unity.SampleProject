@@ -4,6 +4,7 @@ using EcsRx.Events;
 using EcsRx.Groups;
 using EcsRx.Unity.Dependencies;
 using EcsRx.Unity.Systems;
+using EcsRx.Views.Components;
 using Game.Components;
 using Game.SceneCollections;
 using Game.Scripts.Enums;
@@ -14,7 +15,7 @@ namespace Game.ViewResolvers
   public class PickedFoodCanvasViewResolvers : PooledPrefabViewResolverSystem
   {
     /// <inheritdoc />
-    public override IGroup Group { get; } = new Group(typeof(FoodDisplayComponent));
+    public override IGroup Group { get; } = new Group(typeof(PickupFoodDisplayComponent), typeof(ViewComponent));
 
     /// <inheritdoc />
     protected override GameObject PrefabTemplate { get; }
@@ -27,7 +28,8 @@ namespace Game.ViewResolvers
     public PickedFoodCanvasViewResolvers(PrefabCollection prefabs, IUnityInstantiator instantiator, IEntityCollectionManager collectionManager, IEventSystem eventSystem) : base(instantiator, collectionManager, eventSystem)
     {
       Debug.Log($"[PickedFoodCanvasViewResolvers ctor] prefabs is {(prefabs == null ? "null" : "not null")}; prefabs count is {prefabs?.Count}");
-      //PrefabTemplate = prefabs[PrefabEnum.PickedFoodCanvas];
+      PrefabTemplate = prefabs[PrefabEnum.PickedFoodCanvas];
+      Debug.Log($"PickedFoodCanvasViewResolvers.PrefabTemplate is {(PrefabTemplate == null ? "null" : "not null")}");
     }
 
     /// <inheritdoc />

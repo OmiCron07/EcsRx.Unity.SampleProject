@@ -23,7 +23,8 @@ MonoBehaviour:
       m_className: System.String
       m_data: ea34e8009125aed42a4b21498b6fb6bf
       m_key: LoadPath
-    - m_assemblyName: Unity.Addressables.Editor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+    - m_assemblyName: Unity.Addressables.Editor, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
       m_className: UnityEditor.AddressableAssets.BundledAssetGroupProcessor+BundleMode
       m_data: PackTogether
       m_key: BundleMode
@@ -32,7 +33,8 @@ MonoBehaviour:
       m_data: True
       m_key: StaticContent
   m_guid: 03a766b052f509f448076cdcf7b16ac0
-  m_processorAssembly: Unity.Addressables.Editor, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_processorAssembly: Unity.Addressables.Editor, Version=0.0.0.0, Culture=neutral,
+    PublicKeyToken=null
   m_processorClass: UnityEditor.AddressableAssets.BundledAssetGroupProcessor
   m_serializeEntries:
   - m_guid: 062161c1897a54088a5430f8c197e1b8
@@ -66,6 +68,11 @@ MonoBehaviour:
     - Audio
     - PlayerAttack
     - PlayerAttackSound
+  - m_guid: 80322c5f53c624d49b35ed8605a5595e
+    m_address: PickedFoodCanvas
+    m_readOnly: 0
+    m_serializedLabels:
+    - Prefab
   - m_guid: 892962212a4b74d1c9f578a3b6ea6439
     m_address: scavengers_footstep1
     m_readOnly: 0

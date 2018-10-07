@@ -2,7 +2,7 @@
 
 namespace Game.Components
 {
-  public class FoodDisplayComponent : IComponent
+  public class PickupFoodDisplayComponent : IComponent
   {
   }
 }

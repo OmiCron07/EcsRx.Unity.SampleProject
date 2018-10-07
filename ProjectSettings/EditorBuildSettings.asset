@@ -20,5 +20,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Game/Scenes/GameOverScene.unity
     guid: 9f1bd5df0ff261f4babb517d2b46f4c8
+  - enabled: 1
+    path: Assets/Game/Scenes/LoadingScene.unity
+    guid: 70edfbcf65599fb46845423bc3a15d38
   m_configObjects:
-    AddressableAssetSettings: {fileID: 11400000, guid: 3073b6d444c6875438e674e1049fab48, type: 2}
+    AddressableAssetSettings: {fileID: 11400000, guid: 3073b6d444c6875438e674e1049fab48,
+      type: 2}
