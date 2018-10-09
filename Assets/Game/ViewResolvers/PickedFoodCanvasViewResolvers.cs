@@ -14,6 +14,9 @@ namespace Game.ViewResolvers
 {
   public class PickedFoodCanvasViewResolvers : PooledPrefabViewResolverSystem
   {
+    private readonly GameObject _parent;
+
+
     /// <inheritdoc />
     public override IGroup Group { get; } = new Group(typeof(PickupFoodDisplayComponent), typeof(ViewComponent));
 
@@ -27,27 +30,25 @@ namespace Game.ViewResolvers
     /// <inheritdoc />
     public PickedFoodCanvasViewResolvers(PrefabCollection prefabs, IUnityInstantiator instantiator, IEntityCollectionManager collectionManager, IEventSystem eventSystem) : base(instantiator, collectionManager, eventSystem)
     {
-      Debug.Log($"[PickedFoodCanvasViewResolvers ctor] prefabs is {(prefabs == null ? "null" : "not null")}; prefabs count is {prefabs?.Count}");
       PrefabTemplate = prefabs[PrefabEnum.PickedFoodCanvas];
-      Debug.Log($"PickedFoodCanvasViewResolvers.PrefabTemplate is {(PrefabTemplate == null ? "null" : "not null")}");
+      _parent = new GameObject(PrefabTemplate.name);
     }
 
     /// <inheritdoc />
     protected override void OnPoolStarting()
     {
-      Debug.Log("[PickedFoodCanvasViewResolvers] OnPoolStarting");
     }
 
     /// <inheritdoc />
     protected override void OnViewAllocated(GameObject view, IEntity entity)
     {
-      Debug.Log("OnViewAllocated");
+      view.transform.parent = null;
     }
 
     /// <inheritdoc />
     protected override void OnViewRecycled(GameObject view, IEntity entity)
     {
-      Debug.Log("OnViewRecycled");
+      view.transform.parent = _parent.transform;
     }
   }
 }
