@@ -37,7 +37,7 @@ namespace Game.Systems
       var damageComponent = entity.GetComponent<DamageComponent>();
 
       inputComponent.Movement.Subscribe(x => movableComponent.Movement.Value = x).AddTo(_disposables);
-      inputComponent.Attack.ThrottleFirst(TimeSpan.FromMilliseconds(damageComponent.Throttle)).Subscribe(__ => _eventSystem.Publish(new AttackEvent(entity))).AddTo(_disposables);
+      inputComponent.Attack.ThrottleFirst(TimeSpan.FromMilliseconds(damageComponent.Throttle)).Subscribe(__ => _eventSystem.Publish(new AttackEvent(entity, damageComponent.Damage))).AddTo(_disposables);
 
       var gameObject = entity.GetGameObject();
       var onTriggerEnter2DAsObservable = gameObject.OnTriggerEnter2DAsObservable();

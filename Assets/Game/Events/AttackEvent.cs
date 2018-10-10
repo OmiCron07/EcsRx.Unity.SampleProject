@@ -4,12 +4,15 @@ namespace Game.Events
 {
   public class AttackEvent : UnityEngine.Object
   {
-    public IEntity Entity { get; }
+    public IEntity AttackingEntity { get; }
+
+    public int Damage { get; }
 
 
-    public AttackEvent(IEntity entity)
+    public AttackEvent(IEntity attackingEntity, int damage)
     {
-      Entity = entity;
+      AttackingEntity = attackingEntity;
+      Damage          = damage;
     }
   }
 }

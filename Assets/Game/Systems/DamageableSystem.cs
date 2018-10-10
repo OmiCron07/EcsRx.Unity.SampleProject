@@ -1,27 +1,57 @@
 ﻿using System;
+using System.Collections.Generic;
 using EcsRx.Entities;
+using EcsRx.Events;
+using EcsRx.Extensions;
 using EcsRx.Groups;
 using EcsRx.Systems;
+using EcsRx.Unity.Extensions;
 using Game.Components;
+using Game.Events;
 using UniRx;
+using UniRx.Triggers;
+using UnityEngine;
 
 namespace Game.Systems
 {
-  public class DamageableSystem : IReactToEntitySystem
+  public class DamageableSystem : ISetupSystem, ITeardownSystem
   {
+    private readonly IEventSystem _eventSystem;
+    private readonly ICollection<IDisposable> _disposables = new List<IDisposable>();
+
+
     /// <inheritdoc />
     public IGroup Group { get; } = new Group(typeof(HitPointComponent));
 
 
-    /// <inheritdoc />
-    public IObservable<IEntity> ReactToEntity(IEntity entity)
+    public DamageableSystem(IEventSystem eventSystem)
     {
-      return Observable.EveryUpdate().Select(_ => entity);
+      _eventSystem = eventSystem;
     }
 
     /// <inheritdoc />
-    public void Process(IEntity entity)
+    public void Setup(IEntity entity)
     {
+      var hitPointComponent = entity.GetComponent<HitPointComponent>();
+      var onCollisionStream = entity.GetGameObject().OnCollisionStay2DAsObservable();
+      var onAttackStream = _eventSystem.Receive<AttackEvent>();
+
+      onCollisionStream.Zip(onAttackStream,
+                            (onCollision, attackEvent) => new
+                                                            {
+                                                              attackEvent,
+                                                              onCollision
+                                                            }).Subscribe(x =>
+                                                                           {
+                                                                             hitPointComponent.HitPoint.Value -= x.attackEvent.Damage;
+                                                                             Debug.Log("Flash!!");
+                                                                           }).AddTo(_disposables);
+    }
+
+    /// <inheritdoc />
+    public void Teardown(IEntity entity)
+    {
+      _disposables.DisposeAll();
     }
   }
 }

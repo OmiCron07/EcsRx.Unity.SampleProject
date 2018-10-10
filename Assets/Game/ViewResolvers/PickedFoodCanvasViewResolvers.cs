@@ -31,7 +31,7 @@ namespace Game.ViewResolvers
     public PickedFoodCanvasViewResolvers(PrefabCollection prefabs, IUnityInstantiator instantiator, IEntityCollectionManager collectionManager, IEventSystem eventSystem) : base(instantiator, collectionManager, eventSystem)
     {
       PrefabTemplate = prefabs[PrefabEnum.PickedFoodCanvas];
-      _parent = new GameObject(PrefabTemplate.name);
+      _parent = new GameObject($"{PrefabTemplate.name}Pool");
     }
 
     /// <inheritdoc />

@@ -17,7 +17,9 @@ namespace Game.Systems
     /// <inheritdoc />
     public override void EventTriggered(AttackEvent eventData)
     {
-      var spriteRenderer = eventData.Entity.GetGameObject().GetComponentInChildren<Animator>();
+      var gameObject = eventData.AttackingEntity.GetGameObject();
+
+      var spriteRenderer = gameObject.GetComponentInChildren<Animator>();
       spriteRenderer.SetTrigger(CharacterAnimationConstants.Attack);
     }
   }
