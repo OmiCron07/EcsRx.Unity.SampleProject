@@ -6,6 +6,7 @@ using EcsRx.Extensions;
 using EcsRx.Groups;
 using EcsRx.Systems;
 using EcsRx.Unity.Extensions;
+using EcsRx.Unity.MonoBehaviours;
 using Game.Components;
 using Game.Events;
 using UniRx;
@@ -33,6 +34,7 @@ namespace Game.Systems
     public void Setup(IEntity entity)
     {
       var hitPointComponent = entity.GetComponent<HitPointComponent>();
+
       var onCollisionStream = entity.GetGameObject().OnCollisionStay2DAsObservable();
       var onAttackStream = _eventSystem.Receive<AttackEvent>();
 
@@ -41,11 +43,14 @@ namespace Game.Systems
                                                             {
                                                               attackEvent,
                                                               onCollision
-                                                            }).Subscribe(x =>
-                                                                           {
-                                                                             hitPointComponent.HitPoint.Value -= x.attackEvent.Damage;
-                                                                             Debug.Log("Flash!!");
-                                                                           }).AddTo(_disposables);
+                                                            })
+                       .Where(x => x.attackEvent.AttackingEntity == x.onCollision.otherCollider.gameObject.GetComponent<EntityView>().Entity)
+                       .Subscribe(x =>
+                                    {
+                                      hitPointComponent.HitPoint.Value -= x.attackEvent.Damage;
+
+                                      Debug.Log("Flash!!");
+                                    }).AddTo(_disposables);
     }
 
     /// <inheritdoc />
